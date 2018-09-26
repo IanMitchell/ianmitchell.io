@@ -1,0 +1,6 @@
+# OS Files
+.DS_Store
+
+# JS and Next Files
+node_modules
+.next

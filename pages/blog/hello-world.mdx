@@ -1,0 +1,10 @@
+import withMdx from '../../lib/mdx'
+export const meta = {
+  title: 'Hello World!',
+  date: 'August 22, 2013',
+  tags: ['General']
+}
+
+Hello World!
+
+export default withMdx(meta)(({ children }) => <>{children}</>)

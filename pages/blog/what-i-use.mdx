@@ -1,0 +1,12 @@
+import withMdx from '../../lib/mdx'
+import Link from 'next/link';
+
+export const meta = {
+  title: 'What I Use',
+  date: 'January 5, 2014',
+  tags: ['Moved']
+}
+
+**Note:** This post has been moved to a <Link href="/tools"><a>dedicated page</a></Link>.
+
+export default withMdx(meta)(({ children }) => <>{children}</>)

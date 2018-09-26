@@ -1,0 +1,117 @@
+{
+  "posts": [
+    {
+      "title": "Extending Background Color with Box Shadow",
+      "date": "2017-12-29",
+      "tags": [ "Code" ]
+    },
+    {
+      "title": "How I Faked My Redesign",
+      "date": "2016-12-13",
+      "tags": [ "Code", "Design", "Projects" ]
+    },
+    {
+      "title": "Pokémon GO Avatar",
+      "date": "2016-11-07",
+      "tags": [ "General", "Projects" ]
+    },
+    {
+      "title": "Smashing Conf",
+      "date": "2016-10-08",
+      "tags": [ "Code", "Design", "Tools" ]
+    },
+    {
+      "title": "Styleguide Variable Trick",
+      "date": "2016-04-28",
+      "tags": [ "Code", "Tools", "Design" ]
+    },
+    {
+      "title": "Web APIs for Beginners",
+      "date": "2016-04-19",
+      "featured": true,
+      "description": "A look at common API principles and information on how to use them.",
+      "tags": [ "Guides", "Tools" ]
+    },
+    {
+      "title": "On MVPs and Hackathons",
+      "date": "2015-02-18",
+      "tags": [ "Advice" ]
+    },
+    {
+      "title": "Custom iOS and OS X Emoticons with Autocorrect",
+      "path": "autocorrect-custom-ios-and-os-x-emoticons",
+      "date": "2014-11-19",
+      "tags": [ "Advice" ]
+    },
+    {
+      "title": "Senior Project Conclusion",
+      "date": "2014-10-06",
+      "tags": [ "Projects", "Code", "School" ]
+    },
+    {
+      "title": "Ghost",
+      "date": "2014-09-15",
+      "tags": [ "Tools" ]
+    },
+    {
+      "title": "Atom",
+      "date": "2014-07-08",
+      "tags": [ "Tools", "Code" ]
+    },
+    {
+      "title": "Web Design Bookmarks",
+      "date": "2014-05-02",
+      "tags": [ "Moved" ]
+    },
+    {
+      "title": "Study Guard",
+      "date": "2014-04-07",
+      "tags": [ "Hackathons", "Code" ]
+    },
+    {
+      "title": "Mindbody Hackathon",
+      "date": "2014-02-05",
+      "tags": [ "Hackathons", "Code", "Design" ]
+    },
+    {
+      "title": "Collaborative WebGL",
+      "date": "2014-02-03",
+      "tags": [ "Projects", "School", "Code" ]
+    },
+    {
+      "title": "Tip Trip",
+      "date": "2014-02-02",
+      "tags": [ "Design", "Projects" ]
+    },
+    {
+      "title": "Senior Project Introduction",
+      "date": "2014-01-09",
+      "tags": [ "Code", "Projects", "School" ]
+    },
+    {
+      "title": "Project Orange",
+      "date": "2014-01-07",
+      "tags": [ "Code", "Hackathons" ]
+    },
+    {
+      "title": "What I Use",
+      "date": "2014-01-05",
+      "tags": [ "Moved" ]
+    },
+    {
+      "title": "Quill",
+      "date": "2013-11-02",
+      "tags": [ "Code", "Design", "Projects" ]
+    },
+    {
+      "title": "BHS Redesign",
+      "date": "2013-09-04",
+      "tags": [ "School", "Design", "Code", "Projects" ]
+    },
+    {
+      "title": "Hello World!",
+      "date": "2013-08-22",
+      "tags": ["General"]
+    }
+  ]
+}
