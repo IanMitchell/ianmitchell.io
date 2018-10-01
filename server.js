@@ -20,12 +20,10 @@ app.prepare().then(() => {
   /**
    * Projects
    */
+  server.use('/projects', express.static('projects'));
+
   server.get('/pokemon', (request, response) => response.sendFile(
     path.join(__dirname, '/projects/pokemon/index.html')
-  ));
-
-  server.get('/projects/bhs', (request, response) => response.sendFile(
-    path.join(__dirname, '/projects/bhs/index.html')
   ));
 
   server.get('/resume', (request, response) => response.sendFile(
