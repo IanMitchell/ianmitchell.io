@@ -4,7 +4,7 @@
 }
 
 nav {
-  background-color: $color-dark;
+  background-color: var(--color-dark);
   position: fixed;
   z-index: 9;
   top: 0;
@@ -35,7 +35,7 @@ nav {
       }
 
       > a {
-        color: $color-light;
+        color: var(--color-light);
         text-decoration: none;
         text-transform: uppercase;
         font-size: 3.2rem;
@@ -58,7 +58,7 @@ nav {
     &:before {
       content: '';
       display: block;
-      border-top: 2px solid $color-light;
+      border-top: 2px solid var(--color-light);
       width: 80%;
       margin-bottom: 15px;
     }
@@ -71,7 +71,7 @@ nav {
       }
 
       a {
-        color: $color-light;
+        color: var(--color-light);
         letter-spacing: 1px;
         font-size: 2.4rem;
         padding: 10px 0;
@@ -80,7 +80,7 @@ nav {
         @include transition(all .5s ease);
 
         &:hover {
-          color: $color-theme;
+          color: var(--color-theme);
         }
       }
     }

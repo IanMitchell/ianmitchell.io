@@ -1,11 +1,11 @@
 .featured {
   margin: 3 * $spacing 0 $spacing 0;
   padding: $spacing;
-  background: $color-dark;
-  color: $color-light;
+  background: var(--color-dark);
+  color: var(--color-light);
 
   .meta {
-    border-top: 3px solid $color-light;
+    border-top: 3px solid var(--color-light);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,7 +16,7 @@
       margin: 0;
       text-transform: uppercase;
       font-weight: bold;
-      color: $color-light;
+      color: var(--color-light);
     }
 
     time {
@@ -32,7 +32,7 @@
     font-size: 3.2rem;
     margin: $spacing 0;
     font-weight: lighter;
-    color: $color-light;
+    color: var(--color-light);
   }
 
   p {

@@ -1,6 +1,6 @@
 .date-tile {
-  background: $color-dark;
-  color: $color-light;
+  background: var(--color-dark);
+  color: var(--color-light);
   display: flex;
   flex-direction: column;
   align-items: center;

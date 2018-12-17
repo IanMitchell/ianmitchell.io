@@ -1,3 +1,26 @@
+:root {
+  --color-theme: #{$color-theme};
+  --color-dark: #{$color-dark};
+  --color-light: #{$color-light};
+
+  --color-dark-darken-10: darken($color-dark, 10%);
+  --color-dark-lighten-10: lighten($color-dark, 10%);
+  --color-dark-lighten-15: lighten($color-dark, 15%);
+  --color-dark-lighten-40: lighten($color-dark, 40%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-dark: #{$color-light};
+    --color-light: #{$color-dark};
+
+    --color-dark-darken-10: darken($color-light, 10%);
+    --color-dark-lighten-10: lighten($color-light, 10%);
+    --color-dark-lighten-15: lighten($color-light, 15%);
+    --color-dark-lighten-40: lighten($color-light, 40%);
+  }
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -8,10 +31,10 @@ html {
 }
 
 body {
-  border-top: 6px solid $color-dark;
+  border-top: 6px solid var(--color-dark);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: $color-dark;
-  background: $color-light;
+  color: var(--color-dark);
+  background: var(--color-light);
 
   letter-spacing: 0.01rem;
   font-size: 1.8rem;
@@ -28,7 +51,7 @@ body {
 
 h1, h2, h3,
 h4, h5, h6 {
-  color: #2E2E2E; // TODO: Calculate
+  color: var(--color-dark-darken-10);
   line-height: 1.15em;
   margin: 0 0 0.3em 0;
 
@@ -90,12 +113,12 @@ h6 {
 }
 
 a {
-  color: lighten($color-dark, 10%);
+  color: var(--color-dark-lighten-10);
   @include transition(color 0.3s ease);
 }
 
 a:hover {
-  color: darken($color-dark, 15%);
+  color: var(--color-dark-lighten-15);
 }
 
 p, ul, ol, dl {
@@ -166,7 +189,7 @@ hr {
 blockquote {
   margin: 1.75em 0;
   padding: 0 0 0 1.75em;
-  border-left: lighten($color-dark, 10%) 0.4em solid;
+  border-left: var(--color-dark-lighten-10) 0.4em solid;
 
   @include media('>medium') {
     margin-left: -2.2em;
@@ -238,14 +261,14 @@ kbd {
   padding: 1px 8px;
   border: #CCC 1px solid; // TODO: Calculate
   color: #666; // TODO: Calculate
-  text-shadow: $color-light 0 1px 0;
+  text-shadow: var(--color-light) 0 1px 0;
   font-size: 0.9em;
   font-weight: 700;
   background: #F4F4F4; // TODO: Calculate
   border-radius: 4px;
   box-shadow:
     0 1px 0 rgba(0, 0, 0, 0.2), // TODO: Calculate
-    0 1px 0 0 $color-light inset;
+    0 1px 0 0 var(--color-light) inset;
 }
 
 table {
@@ -282,7 +305,7 @@ table tbody + tbody {
 }
 
 table table table {
-  background-color: $color-light;
+  background-color: var(--color-light);
 }
 
 table tbody > tr:nth-child(odd) > td,

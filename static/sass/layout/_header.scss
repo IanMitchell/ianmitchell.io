@@ -19,15 +19,19 @@
   }
 
   > a {
-    background: $color-theme;
-    color: $color-light;
+    background: var(--color-theme);
+    color: var(--color-light);
     padding: $spacing;
     display: flex;
     flex-direction: row;
     align-items: center;
 
     h1 {
-      color: $color-light;
+      color: var(--color-light);
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--color-dark);
+      }
     }
   }
 
@@ -36,7 +40,11 @@
     position: relative;
 
     .burger-icon {
-      @include burger(25px, 3px, 5px, $color-light);
+      @include burger(25px, 3px, 5px, var(--color-light));
+
+      @media (prefers-color-scheme: dark) {
+        @include burger(25px, 3px, 5px, var(--color-dark));
+      }
     }
 
     &.is-active .burger-icon {
