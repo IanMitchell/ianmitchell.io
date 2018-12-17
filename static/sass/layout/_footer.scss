@@ -22,7 +22,7 @@ footer {
       &::before {
         display: block;
         content: '';
-        border-top: 4px solid $color-dark;
+        border-top: 4px solid var(--color-dark);
         width: 10%;
         padding-bottom: $spacing;
       }
@@ -31,6 +31,6 @@ footer {
 
   .footer-sub {
     font-size: 1.0rem;
-    color: lighten($color-dark, 40%);
+    color: var(--color-dark-lighten-40);
   }
 }
