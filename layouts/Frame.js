@@ -45,7 +45,7 @@ export default class extends React.Component {
     this.setState({ menuActive: !this.state.menuActive });
   }
 
-  render () {
+  render() {
     const { menuActive, url } = this.state;
 
     return (
@@ -53,12 +53,12 @@ export default class extends React.Component {
         <Head>
           <title>Ian Mitchell | Web Developer</title>
 
-          <link rel="icon" href="static/favicons/favicon.ico" type="image/ico" />
-          <link rel="icon" href="static/favicons/favicon-16.png" sizes="16x16" type="image/png" />
-          <link rel="icon" href="static/favicons/favicon-32.png" sizes="32x32" type="image/png" />
-          <link rel="icon" href="static/favicons/favicon-48.png" sizes="48x48" type="image/png" />
-          <link rel="icon" href="static/favicons/favicon-62.png" sizes="62x62" type="image/png" />
-          <link rel="icon" href="static/favicons/favicon-192.png" sizes="192x192" type="image/png" />
+          <link rel="icon" href="/static/favicons/favicon.ico" type="image/ico" />
+          <link rel="icon" href="/static/favicons/favicon-16.png" sizes="16x16" type="image/png" />
+          <link rel="icon" href="/static/favicons/favicon-32.png" sizes="32x32" type="image/png" />
+          <link rel="icon" href="/static/favicons/favicon-48.png" sizes="48x48" type="image/png" />
+          <link rel="icon" href="/static/favicons/favicon-62.png" sizes="62x62" type="image/png" />
+          <link rel="icon" href="/static/favicons/favicon-192.png" sizes="192x192" type="image/png" />
         </Head>
 
         <Social
@@ -73,7 +73,7 @@ export default class extends React.Component {
           <Navigation menuActive={menuActive} />
         </header>
 
-        { this.props.children }
+        {this.props.children}
 
         <Footer />
       </Fragment>

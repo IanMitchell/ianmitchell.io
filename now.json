@@ -1,16 +1,45 @@
 {
   "name": "ianmitchell",
+  "version": 2,
   "public": true,
   "alias": [
     "ianmitchell.io",
     "www.ianmitchell.io"
   ],
-  "scale": {
-    "sfo1": {
-      "min": 1,
-      "max": 1
+  "routes": [
+    {
+      "src": "/what-i-use",
+      "status": 301,
+      "headers": {
+        "Location": "/tools"
+      }
+    },
+    {
+      "src": "/pokemon",
+      "dest": "/projects/pokemon/index.html"
+    },
+    {
+      "src": "/resume",
+      "dest": "/projects/resume/index.html"
+    },
+    {
+      "src": "\/\\d{4}\/\\d{2}\/\\d{2}\/(.+)\/?",
+      "status": 301,
+      "headers": {
+        "Location": "/blog/$1"
+      }
     }
-  },
+  ],
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    },
+    {
+      "src": "projects/**",
+      "use": "@now/static"
+    }
+  ],
   "env": {
     "NODE_ENV": "production"
   }
