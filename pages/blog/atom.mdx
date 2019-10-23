@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import withMdx from '../../lib/mdx'
+import Link from 'next/link';
+import withMdx from '../../lib/mdx';
 export const meta = {
   title: 'Atom',
   date: 'July 8, 2014',
-  tags: ['Tools', 'Code']
-}
+  tags: ['Tools', 'Code'],
+};
 
 _**UPDATE:** This post is out of date; I now use Atom full time. Check out my <Link href="/tools"><a>what I use</a></Link> page for more information._
 
@@ -16,10 +16,10 @@ Overall, I've noticed improvement and I remain convinced it has amazing potentia
 
 Atom has gotten better since launch, but it's still slow compared to Sublime Text 3 -- and it uses a _lot_ of memory.
 
-![Atom Memory](/static/images/posts/atom_memory.png)
+![Atom Memory](/images/posts/atom_memory.png)
 _Atom Memory Usage_
 
-![Sublime Memory](/static/images/posts/sublime_memory.png)
+![Sublime Memory](/images/posts/sublime_memory.png)
 _Sublime Text 3 Memory Usage_
 
 On the topic of speed, I've been using Atom's new React editor, but it still leaves a bit to be desired. The developer team seems to be really dedicated to working on this issue however, and I'm optimistic going forward Atom will get more responsive.
@@ -32,9 +32,8 @@ This is perhaps a bigger feature, but I'd like autocomplete to appear automatica
 
 Finally, Atom's Fuzzy Finder needs some serious work. Typing `user.rb` into the fuzzy finder doesn't return `user.rb` first, but rather `user_test.rb`.
 
-![Fuzzy Finder](/static/images/posts/fuzzy_finder.png)
+![Fuzzy Finder](/images/posts/fuzzy_finder.png)
 _Fuzzy Finder Results_
-
 
 ## Plugins and Settings
 
@@ -49,16 +48,16 @@ I use the [File Icons](https://atom.io/packages/file-icons) package, and switche
       .line-number {
         &.git-line-added,
         &.git-line-added:before {
-          color: #A6E22E;
+          color: #a6e22e;
         }
 
         &.git-line-removed {
-          color: #F92672;
+          color: #f92672;
         }
 
         &.git-line-modified,
         &.git-line-modified:before {
-          color: #967EFB;
+          color: #967efb;
         }
       }
     }
@@ -78,4 +77,4 @@ I also reduced the color of the indent guides, which I felt were too intrusive:
 
 I really, really want to be able to use Atom full time, but at the moment it just bogs down my machine too much. My laptop is an aging Mid-2010 Macbook Pro, and when I open Atom the slowdown is noticeable. For now, I'll probably be sticking with Sublime Text 3.
 
-export default withMdx(meta)(({ children }) => <>{children}</>)
+export default withMdx(meta)(({ children }) => <>{children}</>);

@@ -2,12 +2,28 @@ import classnames from 'classnames';
 import Link from 'next/link';
 
 export default ({ menuActive }) => (
-  <nav className={classnames({ 'show': menuActive })}>
+  <nav className={classnames({ show: menuActive })}>
     <ul className="nav_pages">
-      <li><Link href="/" prefetch><a>Home</a></Link></li>
-      <li><Link href="/blog" prefetch><a>Blog</a></Link></li>
-      <li><Link href="/bookmarks" prefetch><a>Bookmarks</a></Link></li>
-      <li><Link href="/tools" prefetch><a>Tools</a></Link></li>
+      <li>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/blog">
+          <a>Blog</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/bookmarks">
+          <a>Bookmarks</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/tools">
+          <a>Tools</a>
+        </Link>
+      </li>
     </ul>
 
     <ul className="nav_links">

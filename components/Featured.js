@@ -6,16 +6,13 @@ export default ({ title, description, date }) => (
   <section className="featured">
     <div className="meta">
       <h5>Featured</h5>
-      <time>{ getStandardDate(new Date(date)) }</time>
+      <time>{getStandardDate(new Date(date))}</time>
     </div>
     <h3>
-      <Link
-        href={`/blog/${slug(title)}`}
-        prefetch
-      >
-        <a>{ title }</a>
+      <Link href={`/blog/${slug(title)}`}>
+        <a>{title}</a>
       </Link>
     </h3>
-    <p>{ description }</p>
+    <p>{description}</p>
   </section>
 );

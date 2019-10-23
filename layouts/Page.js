@@ -3,7 +3,7 @@ import Frame from './Frame';
 export default ({ children }) => (
   <Frame>
     <main className="main" aria-label="Content">
-      { children }
+      {children}
     </main>
   </Frame>
 );

@@ -1,14 +1,14 @@
-import withMdx from '../../lib/mdx'
+import withMdx from '../../lib/mdx';
 export const meta = {
   title: 'Collaborative WebGL',
   smallTitle: true,
   date: 'February 3, 2014',
-  tags: ['Projects', 'School', 'Code']
-}
+  tags: ['Projects', 'School', 'Code'],
+};
 
 For my CSC 471 project, I thought it would be fun to take a 'Construct a House' lab which tasked students to make a scene editor using basic geometric shapes, and port it to the web. As a twist, I wanted to allow multiple users to edit the scene at once. I decided to use Node.JS, [socket.io](http://socket.io), and WebGL to accomplish my goal.
 
-![Screenshot](/static/images/posts/collaborative_webgl.png)
+![Screenshot](/images/posts/collaborative_webgl.png)
 
 ## Backend Development
 
@@ -29,7 +29,6 @@ Every time a user makes a change to a shape, I send a message to the server with
 In addition, whenever a new user connects, the entire shape stack is sent from the server to the client.
 
 One of the issues I ran into was how socket.io handles data; When I passed a shape object to the server, it retained its data but not its methods. When I received a shape update, I would take the data, update the stack, and send it out to all connected clients. The clients would then take this information and then have to create a new instance of the Shape class, take in this object, and then set all the shared fields to the value the server had passed.
-
 
 ## Frontend Development
 
@@ -67,23 +66,30 @@ When I used jQuery to set the width and height of the Canvas, jQuery did it via 
 
 ```javascript
 $(document).ready(function() {
-
   // Get the canvas & context
-  var c = $("canvas");
+  var c = $('canvas');
 
   //Run function when browser resizes
   $(window).resize(respondCanvas);
 
-  function respondCanvas(){
-    var pp = parseFloat($("#panel").css("padding").replace("px", ""));
-    var tp = parseFloat($("#title").css("padding").replace("px", ""));
-    var w = $(window).width() - $("#panel").width() - 2 * pp;
-    var h = $(window).height() - $("#title").height() - 2 * tp;
+  function respondCanvas() {
+    var pp = parseFloat(
+      $('#panel')
+        .css('padding')
+        .replace('px', '')
+    );
+    var tp = parseFloat(
+      $('#title')
+        .css('padding')
+        .replace('px', '')
+    );
+    var w = $(window).width() - $('#panel').width() - 2 * pp;
+    var h = $(window).height() - $('#title').height() - 2 * tp;
 
-    c.attr('width', w );
-    c.attr('height', h );
-    $("#canvas").width(w);
-    $("#canvas").height(h);
+    c.attr('width', w);
+    c.attr('height', h);
+    $('#canvas').width(w);
+    $('#canvas').height(h);
 
     gl.viewportWidth = w;
     gl.viewportHeight = h;
@@ -108,5 +114,4 @@ I'd also probably make it so only one user can edit a shape at once, in order to
 
 You can find the source code for this project on [GitHub](https://github.com/IanMitchell/CollaborativeWebGL)
 
-
-export default withMdx(meta)(({ children }) => <>{children}</>)
+export default withMdx(meta)(({ children }) => <>{children}</>);

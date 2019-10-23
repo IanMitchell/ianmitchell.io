@@ -53,17 +53,42 @@ export default class extends React.Component {
         <Head>
           <title>Ian Mitchell | Web Developer</title>
 
-          <link rel="icon" href="/static/favicons/favicon.ico" type="image/ico" />
-          <link rel="icon" href="/static/favicons/favicon-16.png" sizes="16x16" type="image/png" />
-          <link rel="icon" href="/static/favicons/favicon-32.png" sizes="32x32" type="image/png" />
-          <link rel="icon" href="/static/favicons/favicon-48.png" sizes="48x48" type="image/png" />
-          <link rel="icon" href="/static/favicons/favicon-62.png" sizes="62x62" type="image/png" />
-          <link rel="icon" href="/static/favicons/favicon-192.png" sizes="192x192" type="image/png" />
+          <link rel="icon" href="/favicons/favicon.ico" type="image/ico" />
+          <link
+            rel="icon"
+            href="/favicons/favicon-16.png"
+            sizes="16x16"
+            type="image/png"
+          />
+          <link
+            rel="icon"
+            href="/favicons/favicon-32.png"
+            sizes="32x32"
+            type="image/png"
+          />
+          <link
+            rel="icon"
+            href="/favicons/favicon-48.png"
+            sizes="48x48"
+            type="image/png"
+          />
+          <link
+            rel="icon"
+            href="/favicons/favicon-62.png"
+            sizes="62x62"
+            type="image/png"
+          />
+          <link
+            rel="icon"
+            href="/favicons/favicon-192.png"
+            sizes="192x192"
+            type="image/png"
+          />
         </Head>
 
         <Social
           title="Ian Mitchell | Web Developer"
-          image="/static/favicons/favicon-192.png"
+          image="/favicons/favicon-192.png"
           description="A web developer from Seattle, Washington"
           url={url}
         />

@@ -1,9 +1,9 @@
-import withMdx from '../../lib/mdx'
+import withMdx from '../../lib/mdx';
 export const meta = {
   title: 'Senior Project Conclusion',
   date: 'October 6, 2014',
-  tags: ['Projects', 'Code', 'School']
-}
+  tags: ['Projects', 'Code', 'School'],
+};
 
 I'm a bit late in posting this, but my Senior Project drew to a close in June after two quarters of work. In this post I discuss some of our design decisions and what our group accomplished.
 
@@ -29,13 +29,13 @@ I was responsible for most aspects of the project, with the exception of the que
 
 ## Page Flow
 
-![Page Flow](/static/images/posts/page_flow.png)
+![Page Flow](/images/posts/page_flow.png)
 
 Our application had relatively few webpages. We needed a `Home` page, an `About` page with a short description of the application and developers involved, a generic `Pages` system where we could host standalone FAQ pages or site-wide announcements, a `User` system for account registration, and finally the `Stats` system that handled queries and their respective outputs. The above image outlines the page flow I designed; from the landing page, visitors could read the about page and announcements, or login and gain access to stats and settings.
 
 ## Database Structure
 
-![Database Relationships](/static/images/posts/database_structure.png)
+![Database Relationships](/images/posts/database_structure.png)
 
 League of Legends has a lot of information that you can store. Baron Pit tracks over 500 stats per game; we didn't want to discard any data, since something we might not pay heed to could be incredibly valuable to a third party.
 
@@ -56,13 +56,14 @@ Our application required three separate, dedicated data pipelines. Each had its 
 1. **Static Import:** The static pipeline downloaded all the static assets from the API. This information was League of Legends related, rather than tied to a single game -- things like which Champions were available, what Runes you could use, what Items you could buy, what Masteries you could run, and what Spells existed in the game. We would run this once before we checked for new games - we needed to make sure that our internal representation of the game was up to date with the League of Legend game state. If a new patch had been pushed out with balance changes, we needed to download everything and update our database with the new information.
 2. **Team Import:** Team Import would run once every 12 seconds. It would check the `TeamQueue` table and grab the oldest entry. It would then import information about the team, and the summoners on its roster. If we had an older version of the team in our database, we attached the two of them accordingly.
 3. **Game Import:** Game Import would run once every 12 seconds. This pipeline was by far the most complex, and to some extent controlled the other two pipelines. It was responsible for looping through all registered users, determining if new games had been played, and then importing all the new games per player. The Game Import pipeline was responsible for the following notable edge cases:
-  * Has the summoner changed teams?
-  * Have any of the teams changed rosters
-  * How many new games are there?
-  * Is the oldest game still in the match history for all players?
-  * Is the player on both teams? If so, which team were they part of?
 
-    Additional edge cases had to be accounted for, but these were the most difficult to resolve. In the result of team changes or absence, the team would be added to the `TeamQueue` table and the Game Import pipeline would exit prematurely, moving on to the next user. On the next run if both teams were in the database, the game would be imported. A decision engine was then run on the game, attempting to determine what role each player had fulfilled. In League of Legends, there is a 'metagame', or what is considered to be the best way to go about playing in order to maximize your winning potential. There are five roles, or positions players can take -- Top Lane, Middle Lane, AD Carry, Support, and Jungle. Our decision engine would analyze the stats from the game, and attempt to place each player into the role it thought fit best. If no decision could be reached, the user would be notified and asked to manually set the roles (this also helped ensure if a team ran a nonstandard strategy, our system could account for it). If our system incorrectly assigned roles, users could modify them at a later time.
+- Has the summoner changed teams?
+- Have any of the teams changed rosters
+- How many new games are there?
+- Is the oldest game still in the match history for all players?
+- Is the player on both teams? If so, which team were they part of?
+
+  Additional edge cases had to be accounted for, but these were the most difficult to resolve. In the result of team changes or absence, the team would be added to the `TeamQueue` table and the Game Import pipeline would exit prematurely, moving on to the next user. On the next run if both teams were in the database, the game would be imported. A decision engine was then run on the game, attempting to determine what role each player had fulfilled. In League of Legends, there is a 'metagame', or what is considered to be the best way to go about playing in order to maximize your winning potential. There are five roles, or positions players can take -- Top Lane, Middle Lane, AD Carry, Support, and Jungle. Our decision engine would analyze the stats from the game, and attempt to place each player into the role it thought fit best. If no decision could be reached, the user would be notified and asked to manually set the roles (this also helped ensure if a team ran a nonstandard strategy, our system could account for it). If our system incorrectly assigned roles, users could modify them at a later time.
 
 One of the more difficult parts of this system was maneuvering around the API limit. The League of Legends API has a rate limit of around 10 requests every 1 second. For our application, we required well over this amount; unfortunately, the only way to apply for a limit increase was to demo a functional application. We therefore created a rotating system that took advantage of six API keys (one from each member of the group, and one provided by a friend). Our group was very uncomfortable with our solution; we were intentionally circumventing what we felt was the spirit of the rate limit, and we didn't like it. Unfortunately, we didn't see any other way of doing things. If we used one key, things would slow down to the point of risking significant data loss; we asked a Riot employee if there was any way we could get a partially larger cap, and were told it wasn't possible. Ultimately, we decided to use six keys in our application, with the following self-imposed rules:
 
@@ -75,7 +76,7 @@ The concept we settled on was simple; use a key until it neared its cap, then sw
 
 ## Final Stats
 
-![Code Stats](/static/images/posts/code_stats.png)
+![Code Stats](/images/posts/code_stats.png)
 
 Although these stats don't always paint the best picture, I still find they're fun to look at and can give a general impression of what we did. We had tests for the majority of our application, with the exception of some import pipelines. Due to frequent changes to the API, we tested parts of our pipeline manually.
 
@@ -93,7 +94,7 @@ Here are the [slides for our final presentation](https://cldup.com/8RLnsOhoVF.pd
 
 ## Result
 
-![Baron Pit](/static/images/posts/baron_pit.png)
+![Baron Pit](/images/posts/baron_pit.png)
 _Baron Pit with placeholder artwork_
 
 At the end of two quarters, we had a website with a basic query interface users could interact with. We didn't have time to develop a nice theme complete with custom artwork, but we did our best to make the website look clean.
@@ -104,5 +105,4 @@ Our query interface didn't extend past a very minimal implementation, but member
 
 Near the end of our project Riot announced they were working on a similar service, which they have [since released](http://na.leagueoflegends.com/en/news/game-updates/features/announcing-new-match-history-beta). It duplicates much of the work we did while also providing additional information the API doesn't allow access to. As such, we have shelved our project.
 
-
-export default withMdx(meta)(({ children }) => <>{children}</>)
+export default withMdx(meta)(({ children }) => <>{children}</>);

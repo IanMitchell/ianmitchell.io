@@ -1,9 +1,9 @@
-import withMdx from '../../lib/mdx'
+import withMdx from '../../lib/mdx';
 export const meta = {
   title: 'How I Faked My Redesign',
   date: 'December 13, 2016',
-  tags: ['Code', 'Design', 'Projects']
-}
+  tags: ['Code', 'Design', 'Projects'],
+};
 
 Friends don't let friends do redesigns, folks. Unfortunately, I don't have any friends and ended up with a new look! I documented my wildly unfocused process below[^1] as well as listing some advice for developers about to embark on the same journey.
 
@@ -11,7 +11,9 @@ Friends don't let friends do redesigns, folks. Unfortunately, I don't have any f
 
 > The worst thing as a designer is when the developer gets creative.
 >
-> <small><cite>Smashing Conf SF 2016</cite></small>
+> <small>
+>   <cite>Smashing Conf SF 2016</cite>
+> </small>
 
 I'm a developer. I did a redesign, which means I got creative. If you're a designer, save yourself some pain and stop reading because you're probably not going to like this post.
 
@@ -30,7 +32,7 @@ Start your redesign by going mobile first -- it helps. One, because it's the rig
 
 ### Share Ideas
 
-Don't be afraid to borrow ideas (note: *Ideas* not implementations) from other websites! My post body styling is a heavily modified fork of Casper's, the default theme for the [Ghost](https://ghost.org/) blogging system. I used this theme for my website for a long time, so reusing it allowed me to start from a familiar base. I've made plenty of changes, and I plan on making even more, but it's an incredibly strong foundation to build from. I've ended up with something that's distinctly mine without having to start from scratch.
+Don't be afraid to borrow ideas (note: _Ideas_ not implementations) from other websites! My post body styling is a heavily modified fork of Casper's, the default theme for the [Ghost](https://ghost.org/) blogging system. I used this theme for my website for a long time, so reusing it allowed me to start from a familiar base. I've made plenty of changes, and I plan on making even more, but it's an incredibly strong foundation to build from. I've ended up with something that's distinctly mine without having to start from scratch.
 
 ### Typography
 
@@ -38,7 +40,8 @@ Rely on Typography for the core design elements. It's easy to make typography lo
 
 ```css
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 ```
 
@@ -58,7 +61,7 @@ When I design a website it tends to involve a lot of staring at the screen, ques
 
 ### Jekyll Boilerplate
 
-I knew I wanted to use Jekyll because of GitHub pages -- but using Jekyll doesn't mean you have to start with the default `jekyll new` template. There are many alternatives out there --  I had seen Hugo Giraudel's [starter template](https://github.com/HugoGiraudel/jekyll-boilerplate) before and I liked the simplicity and sane defaults he used. It made more sense to me to start from this template instead of the stock one, especially since I had previously [submitted some updates](https://github.com/HugoGiraudel/jekyll-boilerplate/graphs/contributors) to the project myself.
+I knew I wanted to use Jekyll because of GitHub pages -- but using Jekyll doesn't mean you have to start with the default `jekyll new` template. There are many alternatives out there -- I had seen Hugo Giraudel's [starter template](https://github.com/HugoGiraudel/jekyll-boilerplate) before and I liked the simplicity and sane defaults he used. It made more sense to me to start from this template instead of the stock one, especially since I had previously [submitted some updates](https://github.com/HugoGiraudel/jekyll-boilerplate/graphs/contributors) to the project myself.
 
 ### Sass Boilerplate
 
@@ -118,10 +121,11 @@ ianm in ~/Sites/ianmitchell.io/assets/sass on master [+]
 Of the two `float` references in my CSS, one is a comment about syntax highlighting and the other was imported from Ghost and likely to be refactored out in the future.
 
 I could go on and on about Flexbox, but in short:
-* [It's well supported](http://caniuse.com/#feat=flexbox).
-* It's a little difficult at first, but becomes straightforward once you understand it.
-* I use [this cheatsheet](http://jonibologna.com/flexbox-cheatsheet/) from time to time.
-* Take the dive and use it. Seriously.
+
+- [It's well supported](http://caniuse.com/#feat=flexbox).
+- It's a little difficult at first, but becomes straightforward once you understand it.
+- I use [this cheatsheet](http://jonibologna.com/flexbox-cheatsheet/) from time to time.
+- Take the dive and use it. Seriously.
 
 There are a ton of resources and articles that do a brilliant job teaching flexbox. Learn it, use it, love it.
 
@@ -208,7 +212,7 @@ Turning to the future, we're coming into the Holiday season - it's the perfect o
 
 ### Next.js
 
-Oh man. Where to even begin? This is about to turn into a Zeit HQ love sonnet. Zeit released a universal JavaScript library called [Next.js](https://github.com/zeit/next.js) and it's everything I've ever wanted (this seems to be a pretty common reaction to anything they release). I spent a day or two contemplating whether I should ditch Jekyll and move to Next or not; after a few quick test projects I realized that the library was a little too new and had some bugs that would prevent it from fitting my needs. One of those issues is the lack of Markdown integration; without that, I don't have a great way of transferring my blog posts over in a reusable format. But it is *definitely* worth keeping an eye on.
+Oh man. Where to even begin? This is about to turn into a Zeit HQ love sonnet. Zeit released a universal JavaScript library called [Next.js](https://github.com/zeit/next.js) and it's everything I've ever wanted (this seems to be a pretty common reaction to anything they release). I spent a day or two contemplating whether I should ditch Jekyll and move to Next or not; after a few quick test projects I realized that the library was a little too new and had some bugs that would prevent it from fitting my needs. One of those issues is the lack of Markdown integration; without that, I don't have a great way of transferring my blog posts over in a reusable format. But it is _definitely_ worth keeping an eye on.
 
 ### Another break, and Markdown JavaScript
 
@@ -232,7 +236,7 @@ With those out of the way, I bunkered down and hammered out some writing. I fini
 
 And thus concludes my tale of how a pretty simple redesign ended up taking over four months. Have a "small" personal project that's stressing you out because of how long it's taking? I wouldn't worry about it. You aren't alone.
 
-![Post Redesign State](/static/images/posts/redesign_state.jpg)
+![Post Redesign State](/images/posts/redesign_state.jpg)
 
 ---
 
@@ -242,5 +246,4 @@ And thus concludes my tale of how a pretty simple redesign ended up taking over 
 [^4]: This phrase was hip when I began writing this post I swear
 [^5]: This would be quick to fix with a custom plugin, but that would mean I would have to either leave GitHub pages or add a precompile step. I didn't want to go down either of those paths.
 
-
-export default withMdx(meta)(({ children }) => <>{children}</>)
+export default withMdx(meta)(({ children }) => <>{children}</>);
