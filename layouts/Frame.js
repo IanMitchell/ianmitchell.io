@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Router from 'next/router';
 import Head from 'next/head';
 import { runPrism } from '../lib/prism';
@@ -14,94 +14,84 @@ Router.onRouteChangeComplete = () => {
   runPrism();
 };
 
-export default class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {
-      url: process.env.NOW_URL,
-      menuActive: false,
-    };
-  }
+export default ({ children }) => {
+  const [url, setUrl] = useState(process.env.NOW_URL);
+  const [menuActive, setMenuActive] = useState(false);
 
-  componentDidMount() {
-    // Remove transition blocking
-    document.body.classList.remove('preload');
-
-    // Update URL
-    this.setState({ url: window.document.location });
-  }
-
-  handleClick(e) {
+  const clickHandler = e => {
     e.preventDefault();
 
-    if (this.state.menuActive) {
+    if (menuActive) {
       document.body.classList.remove('js-overflow');
       runPrism();
     } else {
       document.body.classList.add('js-overflow');
     }
 
-    this.setState({ menuActive: !this.state.menuActive });
-  }
+    setMenuActive(!menuActive);
+  };
 
-  render() {
-    const { menuActive, url } = this.state;
+  useEffect(() => {
+    // Remove transition blocking
+    document.body.classList.remove('preload');
 
-    return (
-      <Fragment>
-        <Head>
-          <title>Ian Mitchell | Web Developer</title>
+    // Update URL
+    setUrl(window.document.location);
+  }, []);
 
-          <link rel="icon" href="/favicons/favicon.ico" type="image/ico" />
-          <link
-            rel="icon"
-            href="/favicons/favicon-16.png"
-            sizes="16x16"
-            type="image/png"
-          />
-          <link
-            rel="icon"
-            href="/favicons/favicon-32.png"
-            sizes="32x32"
-            type="image/png"
-          />
-          <link
-            rel="icon"
-            href="/favicons/favicon-48.png"
-            sizes="48x48"
-            type="image/png"
-          />
-          <link
-            rel="icon"
-            href="/favicons/favicon-62.png"
-            sizes="62x62"
-            type="image/png"
-          />
-          <link
-            rel="icon"
-            href="/favicons/favicon-192.png"
-            sizes="192x192"
-            type="image/png"
-          />
-        </Head>
+  return (
+    <Fragment>
+      <Head>
+        <title>Ian Mitchell | Web Developer</title>
 
-        <Social
-          title="Ian Mitchell | Web Developer"
-          image="/favicons/favicon-192.png"
-          description="A web developer from Seattle, Washington"
-          url={url}
+        <link rel="icon" href="/favicons/favicon.ico" type="image/ico" />
+        <link
+          rel="icon"
+          href="/favicons/favicon-16.png"
+          sizes="16x16"
+          type="image/png"
         />
+        <link
+          rel="icon"
+          href="/favicons/favicon-32.png"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/favicons/favicon-48.png"
+          sizes="48x48"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/favicons/favicon-62.png"
+          sizes="62x62"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/favicons/favicon-192.png"
+          sizes="192x192"
+          type="image/png"
+        />
+      </Head>
 
-        <header className="logo">
-          <Header menuActive={menuActive} onClick={this.handleClick} />
-          <Navigation menuActive={menuActive} />
-        </header>
+      <Social
+        title="Ian Mitchell | Web Developer"
+        image="/favicons/favicon-192.png"
+        description="A web developer from Seattle, Washington"
+        url={url}
+      />
 
-        {this.props.children}
+      <header className="logo">
+        <Header menuActive={menuActive} onClick={clickHandler} />
+        <Navigation menuActive={menuActive} />
+      </header>
 
-        <Footer />
-      </Fragment>
-    );
-  }
-}
+      {children}
+
+      <Footer />
+    </Fragment>
+  );
+};
