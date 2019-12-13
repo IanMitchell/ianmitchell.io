@@ -3,36 +3,30 @@ import path from 'path';
 import dynamic from 'next/dynamic';
 
 async function getAllPosts() {
-  debugger;
-  console.log('getAllPosts');
-  const loaders = [];
-  const posts = [];
+  return new Promise((resolve, reject) => {
+    const loaders = [];
+    const posts = [];
 
-  fs.readdir('../../posts/', (err, files) => {
-    if (err) {
-      throw err;
-    }
+    // TODO: Fix when Next.js fixes _dirname
+    // See: https://github.com/zeit/next.js/issues/8251
+    const directory = path.join(process.env.PROJECT_DIRNAME, './posts');
 
-    files.forEach(async file => {
-      console.log(`Checking ${file}`);
-      if (file.endsWith('.mdx')) {
-        loaders.push(
-          import(`../../posts/${file}`).then(({ meta }) => {
-            posts.push(meta);
-            console.log('Loaded post');
-            console.log(meta);
-          })
-        );
+    fs.readdir(directory, (err, files) => {
+      if (err) {
+        return reject(err);
       }
+
+      files.forEach(async file => {
+        if (file.endsWith('.mdx')) {
+          loaders.push(
+            import(`../../posts/${file}`).then(({ meta }) => posts.push(meta))
+          );
+        }
+      });
+
+      Promise.all(loaders).then(() => resolve(posts));
     });
   });
-
-  console.log('Waiting to load...');
-  await Promise.all(loaders);
-
-  console.log('Done');
-  console.log(posts);
-  return posts;
 }
 
 function sortPostsByDate(a, b) {
@@ -75,8 +69,10 @@ async function initialize() {
   };
 }
 
-initialize();
+export default async (request, response) => {
+  if (!Object.entries(CACHE).length) {
+    await initialize();
+  }
 
-export default (request, response) => {
   response.status(200).json(CACHE);
 };

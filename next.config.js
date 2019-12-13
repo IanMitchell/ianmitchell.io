@@ -8,4 +8,7 @@ module.exports = {
     })
   ),
   target: 'serverless',
+  env: {
+    PROJECT_DIRNAME: __dirname,
+  },
 };
