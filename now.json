@@ -15,6 +15,13 @@
       }
     },
     {
+      "src": "/bookmarks",
+      "status": 301,
+      "headers": {
+        "Location": "https://www.notion.so/ianmitchel1/Web-Development-Bookmarks-54071bba54a243b9b687ea30de0eb4f3"
+      }
+    },
+    {
       "src": "/pokemon",
       "dest": "/projects/pokemon/index.html"
     },

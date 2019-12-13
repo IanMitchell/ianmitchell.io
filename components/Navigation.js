@@ -15,11 +15,6 @@ export default ({ menuActive }) => (
         </Link>
       </li>
       <li>
-        <Link href="/bookmarks">
-          <a>Bookmarks</a>
-        </Link>
-      </li>
-      <li>
         <Link href="/tools">
           <a>Tools</a>
         </Link>
