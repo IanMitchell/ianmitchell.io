@@ -4,7 +4,7 @@
   "description": "Personal Site",
   "license": "MIT",
   "engines": {
-    "node": "12.x"
+    "node": "12 || 13"
   },
   "scripts": {
     "dev": "next",
@@ -13,17 +13,17 @@
     "now-build": "next build"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.5.1",
-    "@next/mdx": "^9.1.1",
+    "@mdx-js/loader": "^1.5.3",
+    "@next/mdx": "^9.1.7",
     "classnames": "^2.2.5",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.1.0",
+    "next": "^9.1.7",
     "next-absolute-url": "^1.1.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@zeit/next-sass": "^1.0.1",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.13.0"
   }
 }

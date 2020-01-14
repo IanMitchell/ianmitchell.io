@@ -45,6 +45,10 @@
     {
       "src": "projects/**",
       "use": "@now/static"
+    },
+    {
+      "src": "posts/**",
+      "use": "@now/static"
     }
   ],
   "env": {
