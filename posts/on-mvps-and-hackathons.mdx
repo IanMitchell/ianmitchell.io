@@ -1,9 +1,8 @@
-import withMdx from '../../lib/mdx'
 export const meta = {
   title: 'On MVPs and Hackathons',
   date: 'January 18, 2015',
-  tags: ['Advice']
-}
+  tags: ['Advice'],
+};
 
 I recently read a tweet from [Milktea](https://twitter.com/_lilchen/status/565594310461382659) that expressed uncertainty on how to scale Minimal Viable Products (MVPs) past the proof of concept stage. It made me think about how I had developed applications in the past, and reflect on common patterns I had employed. Given her occupation I suspect she was talking about the design of a product, but seeing as I’m a programmer this post will lean more towards the code side of things.
 
@@ -49,13 +48,10 @@ This one can bite you. In both of the startup weekends I attended, our MVP crash
 
 Finally, let’s return to the question at hand! How do you take an MVP and scale it to a finalized product? My answer: use the same MVP process, but also revisit history to correct previous shortcuts. Generally after a launch I’ll spend a lot of time addressing some of the bigger pain points (things like optimizations, tests, and edge cases) before I start on new features.
 
-In my experience, an MVP and an “upgraded MVP” can be viewed pretty much the same way. I’ve never seen a product that is ‘done’ before. Usually, there’s something that needs tweaking, some new technology that can be added, some new design you can use. The same attitude that you had for your MVP can — and should — be applied to new features going forward.  For instance, instead of adding social integrations all at once, break it into parts. Start with share buttons, then add Twitter card support. Break new features into smaller, contained MVPs.
+In my experience, an MVP and an “upgraded MVP” can be viewed pretty much the same way. I’ve never seen a product that is ‘done’ before. Usually, there’s something that needs tweaking, some new technology that can be added, some new design you can use. The same attitude that you had for your MVP can — and should — be applied to new features going forward. For instance, instead of adding social integrations all at once, break it into parts. Start with share buttons, then add Twitter card support. Break new features into smaller, contained MVPs.
 
 As your product expands, problems will arise caused by things that you thought were fine. Pivot! Identifying these areas during your initial MVP phase isn’t always possible — don’t spend a lot of time worrying about it. Experience will also help here; the more MVPs you ship, the more aware of potential problems you’ll be without spending a lot of time beforehand thinking about implementation details.
 
 ## Conclusion
 
 My professor told me once that it takes less time to fix mistakes than it does sitting around thinking about how to avoid mistakes altogether. I think in an industry where you can ship updates quickly and cheaply, it’s advice worth taking to heart. Ship fast and break things — learn from experience!
-
-
-export default withMdx(meta)(({ children }) => <>{children}</>)

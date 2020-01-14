@@ -9,7 +9,7 @@ export default ({ title, description, date }) => (
       <time>{getStandardDate(new Date(date))}</time>
     </div>
     <h3>
-      <Link href={`/blog/${slug(title)}`}>
+      <Link href="/blog/[post]" as={`/blog/${slug(title)}`}>
         <a>{title}</a>
       </Link>
     </h3>

@@ -1,12 +1,12 @@
-import withMdx from '../../lib/mdx'
 export const meta = {
   title: 'Web APIs for Beginners',
   startDate: 'May 19, 2015', // LOL
   date: 'April 19, 2016',
   tags: ['Guides', 'Tools'],
   featured: true,
-  description: 'A look at common API principles and information on how to use them.'
-}
+  description:
+    'A look at common API principles and information on how to use them.',
+};
 
 While hanging out in [Milktea's Twitch Chat](http://twitch.tv/milktea)[^1] the other night a couple of viewers began asking me how to use APIs and for help understanding common terms. It came to light that people felt there weren't a lot of beginner-level posts about APIs; articles generally targeted an audience with an intermediate to high level of understanding. While answering questions and offering advice, I was encouraged to compile my knowledge into a blog post - and here we are!
 
@@ -61,15 +61,15 @@ A lot of the time you'll see an API describe itself as [RESTful](http://en.wikip
 
 To begin with, the web is built on [HTTP](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). The system itself is complicated, but what you really need to know is that by using HTTP you can visit a URL in different ways. When you send a request to an address, you can associate one of the following HTTP methods with it:
 
-Method | Description
--------|------------
-GET    | These requests should only **return** data.
-POST   | These requests should **create new** data.
-DELETE | These requests should **delete** data.
-PATCH  | These requests should **partially modify** data (this is a newer method).
-PUT    | A combination of PATCH and POST. If the data doesn't exist, create it. If it does exist, modify it. In many cases, this method is used instead of PATCH.
+| Method | Description                                                                                                                                              |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | These requests should only **return** data.                                                                                                              |
+| POST   | These requests should **create new** data.                                                                                                               |
+| DELETE | These requests should **delete** data.                                                                                                                   |
+| PATCH  | These requests should **partially modify** data (this is a newer method).                                                                                |
+| PUT    | A combination of PATCH and POST. If the data doesn't exist, create it. If it does exist, modify it. In many cases, this method is used instead of PATCH. |
 
- _These methods are sometimes referred to as [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update, Delete). There are additional options, but they typically aren't important in terms of API design._
+_These methods are sometimes referred to as [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update, Delete). There are additional options, but they typically aren't important in terms of API design._
 
 Browsers in particular use these methods all the time behind the scenes when interacting with websites. Say you want to make a Twitch account. You'd type the address into the browser, and hit enter. The browser will send a GET request, and display the homepage. You fill out a new user form, and hit create. The browser will then send a POST request indicating a new account should be created. You log in, and decide that you want to edit your account description. When you fill out the field and click "Update Profile", the browser will send a PATCH request to save your changes.
 
@@ -88,7 +88,13 @@ Most services now will return JSON by default, but some can support XML by appen
 > How to troll:
 > Start putting stuff in XML.
 >
-> <small><cite><a href="https://twitter.com/SwiftOnSecurity/status/651401028739338240">@SwiftOnSecurity</a></cite></small>
+> <small>
+>   <cite>
+>     <a href="https://twitter.com/SwiftOnSecurity/status/651401028739338240">
+>       @SwiftOnSecurity
+>     </a>
+>   </cite>
+> </small>
 
 #### Accessibility
 
@@ -104,8 +110,8 @@ Although API design differs from company to company, there are several common th
 
 Rate Limiting refers to a service putting an artificial bottleneck on their API. Usually you'll see this expressed as "our API is limited to 10 calls / second" or something similar. Web services do this for a few reasons:
 
-* To create a business model. Does your application need additional calls? You'll need to pay for a higher rate limit!
-* To prevent unintentional [DDOS attacks](http://en.wikipedia.org/wiki/Denial-of-service_attack). If Twitter started to use your API, there's a good chance your site would crash under the massive load!
+- To create a business model. Does your application need additional calls? You'll need to pay for a higher rate limit!
+- To prevent unintentional [DDOS attacks](http://en.wikipedia.org/wiki/Denial-of-service_attack). If Twitter started to use your API, there's a good chance your site would crash under the massive load!
 
 This is a little technical, but a good way to 'work around' rate limiting is to cache results. Imagine you have an application that calls an API with a rate limit of 1 call / 60 seconds, and you need to call it 1 time / 1 second. What you can do is make the first call to the API and save the result for 60 seconds. For all subsequent calls refer to the saved result rather than calling the API, up until 60 seconds has passed. _(Do note that this solution isn't perfect and won't always work)_
 
@@ -125,12 +131,12 @@ Sometimes the account credentials will be part of the request url, but a more co
 
 ```javascript
 $.ajax({
-  url: "http://my-api.com/api/v1/endpoint",
-  type: "GET",
+  url: 'http://my-api.com/api/v1/endpoint',
+  type: 'GET',
   headers: {
-    "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ=",
+    Authorization: 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=',
   },
-})
+});
 ```
 
 The string of random characters looks complicated, but it's not that bad! It's a [base64 encoded](http://en.wikipedia.org/wiki/Base64) string in the form of `username:passphrase` (colon required)[^3]. So, an updated function might look like:
@@ -138,12 +144,12 @@ The string of random characters looks complicated, but it's not that bad! It's a
 ```javascript
 let auth = window.btoa(`${username}:${passphrase}`);
 $.ajax({
-  url: "http://my-api.com/api/v1/endpoint",
-  type: "GET",
+  url: 'http://my-api.com/api/v1/endpoint',
+  type: 'GET',
   headers: {
-    "Authorization": `Basic ${auth}`,
+    Authorization: `Basic ${auth}`,
   },
-})
+});
 ```
 
 Other languages will follow a similar flow. If you're using a HTTP request library, some will even have built-in methods to set this header!
@@ -156,29 +162,26 @@ For instance, let's say you forgot to set your HTTP basic auth header before sen
 
 There are a variety of HTTP status codes that each signify different things. I've highlighted some common ones below:
 
-
-Code | Verb               | Description
----- | ------------------ | -----------
-200  | OK                 | This indicates a successful request. Yay!
-201  | Created            | This indicates that your request was accepted and a new resource was created
-204  | No Content         | Usually sent without a response body to indicate success
-301  | Moved Permanently  | The endpoint URL has changed, and you probably need to update your request
-304  | Not Modified       | No content has changed since your last request
-400  | Bad Request        | Something is wrong with your request. Usually this means your URL is malformed
-401  | Unauthorized       | Your request doesn't have the proper authorization. Do you need an API key, a login token, or basic auth?
-404  | Not Found          | No content exists that meets your criteria. Check your endpoint spelling and request parameters (do you need to [escape something](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI)?)
-405  | Method Not Allowed | Usually this means you used the wrong HTTP method (i.e., sending a GET request instead of a POST)
-429  | Too Many Requests  | This traditionally indicates you've exceeded your rate limit.
-
+| Code | Verb               | Description                                                                                                                                                                                                                      |
+| ---- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 200  | OK                 | This indicates a successful request. Yay!                                                                                                                                                                                        |
+| 201  | Created            | This indicates that your request was accepted and a new resource was created                                                                                                                                                     |
+| 204  | No Content         | Usually sent without a response body to indicate success                                                                                                                                                                         |
+| 301  | Moved Permanently  | The endpoint URL has changed, and you probably need to update your request                                                                                                                                                       |
+| 304  | Not Modified       | No content has changed since your last request                                                                                                                                                                                   |
+| 400  | Bad Request        | Something is wrong with your request. Usually this means your URL is malformed                                                                                                                                                   |
+| 401  | Unauthorized       | Your request doesn't have the proper authorization. Do you need an API key, a login token, or basic auth?                                                                                                                        |
+| 404  | Not Found          | No content exists that meets your criteria. Check your endpoint spelling and request parameters (do you need to [escape something](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI)?) |
+| 405  | Method Not Allowed | Usually this means you used the wrong HTTP method (i.e., sending a GET request instead of a POST)                                                                                                                                |
+| 429  | Too Many Requests  | This traditionally indicates you've exceeded your rate limit.                                                                                                                                                                    |
 
 50x codes indicate an API call has failed due to an issue with the service, not due to an error in your request:
 
-
-Code | Verb                  | Description
----- | --------------------- | -----------
-500  | Internal Server Error | While processing your request, the API server crashed. Inform the service of the problem
-501  | Not Implemented       | While the endpoint exists, it currently doesn't do anything. Ask the service when you can expect it to be finished
-503  | Service Unavailable   | The service is down right now and can't be accessed
+| Code | Verb                  | Description                                                                                                        |
+| ---- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 500  | Internal Server Error | While processing your request, the API server crashed. Inform the service of the problem                           |
+| 501  | Not Implemented       | While the endpoint exists, it currently doesn't do anything. Ask the service when you can expect it to be finished |
+| 503  | Service Unavailable   | The service is down right now and can't be accessed                                                                |
 
 _This list is not comprehensive - you might run into other codes as well. Different services implement these codes differently (and sometimes incorrectly)._
 
@@ -193,10 +196,5 @@ _If you have any questions or corrections, let me know. I welcome all feedback! 
 ---
 
 [^1]: Since this topic came up on [Twitch](http://twitch.tv), I figured it would be apt to use the streaming platform as a recurring example. For those who aren't familiar with the service, Twitch is a website that allows you to broadcast your PC's video and audio to viewers who you can interact with in a text chat room. Twitch is primarily used to livestream video games.
-
 [^2]: As mentioned in the [linked Wikipedia article](https://en.wikipedia.org/wiki/JSON) JSON stands for JavaScript Object Notation, which is a fancy way of saying it's a JavaScript object in string form. With XML, you need to create a complex parser in order to turn a response into an something you can use. With JSON, you can just use `let obj = JSON.parse(result)`. This is a lot faster for developers, and much less expensive computationally. JSON is now well represented in other languages; most have a library that allow you to construct an array or object from a JSON input. Subjectively, I think JSON is a lot easier to read and understand at a glance. If you're just starting with APIs, I would recommend not bothering with XML unless you're given no other alternative.
-
 [^3]: Please note that this is **NOT** secure. When you base64 encode a string, it's a reversible process. You can run base64 decode to get the original input, making it a bad way of transferring passwords or other secure information.
-
-
-export default withMdx(meta)(({ children }) => <>{children}</>)

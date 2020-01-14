@@ -12,7 +12,7 @@ export default ({ title, path, date, tags }) => (
     <div>
       <span className="tags">{humanize(tags)}</span>
       <h4>
-        <Link href={`/blog/${path || slug(title)}`}>
+        <Link href={`/blog/[post]`} as={`/blog/${path || slug(title)}`}>
           <a>{title}</a>
         </Link>
       </h4>
