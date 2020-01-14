@@ -1,3 +1,4 @@
+const path = require('path');
 const withSass = require('@zeit/next-sass');
 const withMDX = require('@next/mdx')();
 
@@ -9,6 +10,6 @@ module.exports = {
   ),
   target: 'serverless',
   env: {
-    PROJECT_DIRNAME: __dirname,
+    POSTS_DIRECTORY: path.join(__dirname, 'posts'),
   },
 };

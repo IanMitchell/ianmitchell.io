@@ -11,7 +11,14 @@
       "src": "/what-i-use",
       "status": 301,
       "headers": {
-        "Location": "/tools"
+        "Location": "/uses"
+      }
+    },
+    {
+      "src": "/tools",
+      "status": 301,
+      "headers": {
+        "Location": "/uses"
       }
     },
     {
@@ -26,6 +33,10 @@
       "dest": "/projects/pokemon/index.html"
     },
     {
+      "src": "/projects/bhs",
+      "dest": "/projects/bhs/index.html"
+    },
+    {
       "src": "/resume",
       "dest": "/projects/resume/index.html"
     },
@@ -37,20 +48,11 @@
       }
     }
   ],
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@now/next"
-    },
-    {
-      "src": "projects/**",
-      "use": "@now/static"
-    },
-    {
-      "src": "posts/**",
-      "use": "@now/static"
+  "functions": {
+    "pages/api/posts.js": {
+      "includeFiles": "posts/**"
     }
-  ],
+  },
   "env": {
     "NODE_ENV": "production"
   }

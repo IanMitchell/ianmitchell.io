@@ -1,15 +1,21 @@
 import fs from 'fs';
 import path from 'path';
-import dynamic from 'next/dynamic';
 
 async function getAllPosts() {
   return new Promise((resolve, reject) => {
     const loaders = [];
     const posts = [];
 
-    // TODO: Fix when Next.js fixes _dirname
-    // See: https://github.com/zeit/next.js/issues/8251
-    const directory = path.join(process.env.PROJECT_DIRNAME, './posts');
+    let directory = '';
+
+    // See:
+    // https://github.com/zeit/now/issues/3083
+    // https://github.com/zeit/next.js/issues/8251
+    if (process.env.NODE_ENV === 'production') {
+      directory = path.join('..', process.env.POSTS_DIRECTORY);
+    } else {
+      directory = process.env.POSTS_DIRECTORY;
+    }
 
     fs.readdir(directory, (err, files) => {
       if (err) {
