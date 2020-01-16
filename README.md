@@ -1,8 +1,8 @@
 # ianmitchell.io
 
-This is the source code for my website. It uses React, MDX, and Next.js.
+This is the source code for my website. It uses Gatsby and MDX.
 
 Use the following commands to run the website:
 
     $ yarn install
-    $ yarn run dev
+    $ yarn start
