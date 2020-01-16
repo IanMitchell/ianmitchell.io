@@ -1,64 +1,58 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+exports.createPages = async function({ graphql, actions }) {
+  const { createPage } = actions;
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMdx {
           edges {
             node {
               fields {
                 slug
               }
               frontmatter {
+                date
+                tags
                 title
               }
+              body
             }
           }
         }
       }
     `
-  )
+  );
 
   if (result.errors) {
-    throw result.errors
+    throw result.errors;
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
-
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
+  result.data.allMdx.edges.forEach(post => {
     createPage({
       path: post.node.fields.slug,
-      component: blogPost,
+      component: path.resolve(`./src/templates/post.js`),
       context: {
         slug: post.node.fields.slug,
-        previous,
-        next,
       },
-    })
-  })
-}
+    });
+  });
+};
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = function({ node, actions, getNode }) {
+  if (node.internal.type === `Mdx`) {
+    const value = createFilePath({
+      node,
+      getNode,
+      trailingSlash: false,
+    });
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
+    actions.createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
-}
+};

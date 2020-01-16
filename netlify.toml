@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/what-i-use"
+  to = "/uses"
+  status = 301
+
+[[redirects]]
+  from = "/tools"
+  to = "/uses"
+  status = 301
+
+[[redirects]]
+  from = "\/\\d{4}\/\\d{2}\/\\d{2}\/(.+)\/?"
+  to = "/blog/$1"
+  status = 301

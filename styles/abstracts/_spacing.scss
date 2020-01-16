@@ -1,0 +1,7 @@
+$max-width: 710px;
+$spacing: 1rem;
+
+@mixin restrict-width() {
+  width: 80%;
+  max-width: $max-width;
+}
