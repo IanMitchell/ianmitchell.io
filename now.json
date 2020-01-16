@@ -2,10 +2,6 @@
   "name": "ianmitchell",
   "version": 2,
   "public": true,
-  "alias": [
-    "ianmitchell.io",
-    "www.ianmitchell.io"
-  ],
   "routes": [
     {
       "src": "/what-i-use",
