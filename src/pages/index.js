@@ -47,7 +47,7 @@ export default function Index() {
             patterns, and packages I want to try out.
           </p>
 
-          <p>Aquarius is currently serving {userCount} users.</p>
+          {userCount && <p>Aquarius is currently serving {userCount} users.</p>}
         </div>
       </div>
     </Page>

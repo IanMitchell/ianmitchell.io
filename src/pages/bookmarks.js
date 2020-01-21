@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Page from '../components/Page';
 import Social from '../components/Social';
 
@@ -17,6 +17,7 @@ export default function Bookmarks() {
           <a
             href="https://www.notion.so/ianmitchel1/Web-Development-Bookmarks-54071bba54a243b9b687ea30de0eb4f3"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Take a look at them here
           </a>{' '}

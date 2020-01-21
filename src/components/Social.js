@@ -23,7 +23,7 @@ export default function Social({
     if (useCurrentUrl) {
       setLocation(window.document.location);
     }
-  }, []);
+  }, [useCurrentUrl]);
 
   return (
     <Helmet>
