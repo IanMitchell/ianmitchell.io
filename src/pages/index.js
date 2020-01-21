@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Page from '../components/Page';
 
 export default function Index() {
-  const [userCount, setUserCount] = useState(0);
+  const [userCount, setUserCount] = useState(null);
 
   useEffect(() => {
     async function getUserCount() {
